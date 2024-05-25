@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sistema</title>
+  <!-- Link Styles -->
+  <link rel="stylesheet" href="Inventario.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    /* Estilos CSS */
+    /* Aquí puedes agregar tus estilos personalizados */
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <!-- Contenido de la barra lateral -->
+    <div class="logo_details">
+      <i class="bx bxl-audible icon"></i>
+      <div class="logo_name">A&A Innovations</div>
+      <i class="bx bx-menu" id="btn"></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="Inventario.html">
+          <i class="bx bx-grid-alt"></i>
+          <span class="link_name">Inventory</span>
+        </a>
+        <span class="tooltip">Inventory</span>
+      </li>
+      <li>
+        <a href="Facturas.html">
+          <i class="bx bx-cart-alt"></i>
+          <span class="link_name">Bills</span>
+        </a>
+        <span class="tooltip">Bills</span>
+      </li>
+      <li class="profile">
+        <div class="profile_details">
+          <img src="profile.jpeg" alt="profile image">
+          <div class="profile_content">
+            <div class="name">Admin</div>
+            <div class="designation">Admin</div>
+          </div>
+        </div>
+        <a id="log_out" href="index.html">
+          <i class="bx bx-log-out" id="log_out"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+<section class="home-section">
+  <!-- Contenido de la sección principal -->
+  <div class="text">Inventory</div>
+  <div class="table-container">
+    <!-- Botón para agregar -->
+    <button class="agregar-btn" onclick="redireccionar()">Add Product</button>
+    <script>
+      function redireccionar() {
+        // Reemplaza 'url-de-destino' con la URL a la que deseas redirigir al usuario
+        window.location.href = './Agregar.html';
+      }
+    </script>
+    <!-- Tabla -->
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Amount</th>
+          <th>Supplier</th>
+          <th>Entry Date</th>
+          <th>Additional Notes</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+     
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Ventana modal para editar producto -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal()">&times;</span>
+    <h2>Edit Product</h2>
+    <form id="editarProductoForm" method="post" action="">
+      <!-- Aquí se colocarán los inputs para editar el producto -->
+      <label for="editNombreProducto">Name:</label>
+      <input type="text" id="editNombreProducto" name="nombre" required>
+      <label for="editDescripcionProducto">Description:</label>
+      <input type="text" id="editDescripcionProducto" name="descripcion" required>
+      <label for="editCategoriaProducto">Category:</label>
+      <input type="text" id="editCategoriaProducto" name="categoria" required>
+      <label for="editPrecioProducto">Price:</label>
+      <input type="number" id="editPrecioProducto" name="precio" required>
+      <label for="editCantidadProducto">Amount:</label>
+      <input type="number" id="editCantidadProducto" name="cantidad" required>
+      <label for="editProveedorProducto">Supplier:</label>
+      <input type="text" id="editProveedorProducto" name="proveedor" required>
+      <label for="editFechaIngresoProducto">Entry Date:</label>
+      <input type="date" id="editFechaIngresoProducto" name="fecha" required>
+      <label for="editNotasAdicionales">Additional Notes:</label>
+      <textarea id="editNotasAdicionales" name="notas" required></textarea>
+      <!-- Cambiar el tipo de botón a submit -->
+      <button type="submit" name="submit">Save Changes</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Función para abrir la ventana modal y mostrar los datos del producto
+  function abrirModal(idProducto, nombreProducto, descripcionProducto, categoriaProducto, precioProducto, cantidadProducto, proveedorProducto, fechaIngresoProducto, notasAdicionales) {
+    var modal = document.getElementById('modal');
+    modal.style.display = 'block';
+
+    // Llenar los inputs del formulario con los datos del producto
+    document.getElementById('editNombreProducto').value = nombreProducto;
+    document.getElementById('editDescripcionProducto').value = descripcionProducto;
+    document.getElementById('editCategoriaProducto').value = categoriaProducto;
+    document.getElementById('editPrecioProducto').value = precioProducto;
+    document.getElementById('editCantidadProducto').value = cantidadProducto;
+    document.getElementById('editProveedorProducto').value = proveedorProducto;
+    document.getElementById('editFechaIngresoProducto').value = fechaIngresoProducto;
+    document.getElementById('editNotasAdicionales').value = notasAdicionales;
+
+    // Guardar el ID del producto en un atributo data del formulario
+    document.getElementById('editarProductoForm').setAttribute('data-id', idProducto);
+  }
+
+  // Función para cerrar la ventana modal
+  function cerrarModal() {
+    var modal = document.getElementById('modal');
+    modal.style.display = 'none';
+  }
+  function confirmarEliminar(idProducto) {
+    // Mostrar cuadro de diálogo de confirmación
+    var confirmacion = confirm("Are you sure you want to delete the product?");
+    
+    // Si el usuario confirma, enviar la solicitud de eliminación al servidor
+    if (confirmacion) {
+        // Aquí puedes enviar una solicitud AJAX al servidor para eliminar el producto
+        // Por ahora, solo mostraremos un mensaje de alerta
+        alert("Se eliminará el producto con ID: " + idProducto);
+    }
+}
+
+    function confirmarEliminar(idProducto) {
+        if (confirm("Are you sure you want to delete the product?")) {
+            // Aquí puedes agregar el código html para eliminar el producto
+            window.location.href = "Inventario.html?id=" + idProducto;
+        }
+    }
+
+</script>
+
+</body>
+</html>

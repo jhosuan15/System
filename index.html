@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sistema</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="contenedor-formulario contenedor">
+        <div class="imagen-formulario">
+            
+        </div>
+
+        <form class="formulario" id="loginForm">
+            <div class="texto-formulario">
+                <h2>Welcome back</h2>
+                <p>Login with your account</p>
+            </div>
+            <div class="input">
+                <label for="usuario">User</label>
+                <input placeholder="Enter your name" type="text" id="usuario" name="usuario">
+            </div>
+            <div class="input">
+                <label for="contraseña">Password</label>
+                <input placeholder="Enter your password" type="password" id="contraseña" name="contraseña">
+            </div>
+            <div class="input">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Obtener el formulario de inicio de sesión
+        const loginForm = document.getElementById('loginForm');
+
+        // Agregar un evento de escucha para el envío del formulario
+        loginForm.addEventListener('submit', function(event) {
+            // Prevenir el envío del formulario por defecto
+            event.preventDefault();
+
+            // Obtener los valores del usuario y la contraseña
+            const usuario = document.getElementById('usuario').value;
+            const contraseña = document.getElementById('contraseña').value;
+
+            // Verificar las credenciales
+            if (usuario === '' && contraseña === '') {
+                // Redirigir al usuario a otra página
+                window.location.href = 'Inventario.html';
+            } else {
+                // Mostrar un mensaje de error
+                alert('Incorrect user or password');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

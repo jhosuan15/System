@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sistema</title>
+  <!-- Link Styles -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="AgregarFactura.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo_details">
+      <i class="bx bxl-audible icon"></i>
+      <div class="logo_name">SISTEMA</div>
+      <i class="bx bx-menu" id="btn"></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="Inventario.html">
+          <i class="bx bx-grid-alt"></i>
+          <span class="link_name">Inventory</span>
+        </a>
+        <span class="tooltip">Inventory</span>
+      </li>
+      <li>
+        <a href="Facturas.html">
+          <i class="bx bx-cart-alt"></i>
+          <span class="link_name">Bills</span>
+        </a>
+        <span class="tooltip">Bills</span>
+      </li>
+      <li class="profile">
+        <div class="profile_details">
+          <img src="profile.jpeg" alt="profile image">
+          <div class="profile_content">
+            <div class="name">Admin</div>
+            <div class="designation">Admin</div>
+          </div>
+        </div>
+        <a id="log_out" href="index.html">
+          <i class="bx bx-log-out" id="log_out"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+<section class="home-section">
+  <div class="text">Bills</div>
+  <div class="container">
+    <div class="form-container">
+        <div class="form-header">
+          <h2>Add New Bill</h2>
+          <p>Fill in the fields to add a new bill</p>
+        </div>
+
+        <form id="agregarProductoForm" method="post" action="">
+          <div class="form-row">
+            <div class="form-group">
+                <label for="nombreProducto">Name</label>
+                <input type="text" id="nombreProducto" name="nombreProducto" placeholder="Enter product name" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcionProducto">Buyer</label>
+                <input type="text" id="descripcionProducto" name="informacionComprador" placeholder="Enter buyer information" required>
+            </div>
+            <div class="form-group">
+              <label for="fechaIngresoProducto">Bill Date</label>
+              <input type="date" id="fechaFactura" name="fechaFactura" required>
+            </div>
+            <div class="form-group">
+                <label for="precioProducto">Total</label>
+                <input type="number" id="precioProducto" name="precioProducto" placeholder="Enter total price" required>
+            </div>
+            <div class="form-group">
+                <label for="cantidadProducto">Payment</label>
+                <input type="text" id="cantidadProducto" name="cantidadProducto" placeholder="Enter the payment type" required>
+            </div>
+            <div class="form-group">
+                <label for="proveedorProducto">Mail</label>
+                <input type="text" id="proveedorProducto" name="proveedorProducto" placeholder="Enter buyer mail" required>
+            </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <button type="submit" name="submit">Add Bill</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+  </div>
+</section>
+</body>
+</html>
